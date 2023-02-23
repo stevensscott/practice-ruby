@@ -1,8 +1,8 @@
 require "pstore"
-require TTY
+require "tty-table"
 store = PStore.new("data.pstore")
 
-table = TTY::Table.new(["header1","header2"], [["a1", "a2"], ["b1", "b2"]])
+table = TTY::Table.new(["name","color","price","rating"], [["a1", "a2"], ["b1", "b2"], ["c1", "c2"], ["d1", "d2"]])
 
 myItems=[
 {:name=>"item1",:color=>"red",:price=>"5.00",:rating=>"5"},
@@ -99,4 +99,4 @@ end
 myItem0 = store.transaction { store[:myItems] }
 puts "MyItem0 read from data.pstore #{myItem0}"
 
-#puts table.render(:ascii)
+puts table.render(:ascii)
